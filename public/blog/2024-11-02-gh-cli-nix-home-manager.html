@@ -52,7 +52,19 @@
 
     <h2>Authenticating GitHub CLI</h2>
     <p>With GitHub CLI installed, you still need to authenticate. I'm no expert on this subject, so I'll simply tell you
-      what I did to get up and running. To check that <code>gh</code> was available.</p>
+      what I did to get up and running. To check that <code>gh</code> was available, I just use <code>type gh</code>.
+      The output should be the path to the <code>gh</code> executable in your path (or a symbolic link). After that, I
+      executed <code>gh auth login</code> to start the authentication process to GitHub. You need to follow the prompts
+      to get it configured and if anything is unclear, seek out the docs from GitHub.</p>
+
+    <h2>Using GitHub CLI</h2>
+    <p>To put it to good use, I decided to make a private gist on GitHub to store my <code>home.nix</code> file so that
+      I can reproduce my configuration on other systems. To accomplish that, I found the file and used the command
+      <code>gh gist create ~/path/to/home.nix --desc "Description for my Gist"</code>. With that completed, I have a
+      backup of my Home Manager configuration stored in GitHub that I can pull down onto other machines or update
+      periodically. I find with how much time system configuration can take when you start on a new machine, finding a
+      way to replicate your setup is time worth spending.
+    </p>
   </main>
 
   <footer>
