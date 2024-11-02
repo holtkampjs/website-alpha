@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>How I used Nix Home Manager to quickly set up my GitHub CLI</title>
+  <meta charset="utf-8">
+
+  <!-- CDN Link: https://cdn.simplecss.org/simple.css -->
+  <link rel="stylesheet" href="../css/simple.css">
+</head>
+
+<body>
+  <header>
+    <nav>
+      <a href="../index.html">Home</a>
+      <a href="index.html" aria-current="page">Blog</a>
+      <a href="../about.html">About</a>
+    </nav>
+
+    <h1>How I used Nix Home Manager to quickly set up my GitHub CLI</h1>
+  </header>
+
+  <main>
+    <h2>GitHub CLI</h2>
+    <p>GitHub CLI is a useful program for performing GitHub specific operations without leaving your shell. While it
+      encapsulates many standard Git operations, I tend to only use GitHub CLI for the capabilities I cannot replicate
+      from the <code>git</code> command. One step everyone needs to complete to utilize tools like the GitHub CLI is
+      to set up the program in your environment. While GitHub provides plenty of documentation to accomplish this, I
+      have recently been using the Nix Package Manager combined with Nix Home Manager to manage the applications I
+      install on my machine.</p>
+
+    <h2>Nix Home Manager</h2>
+    <p>Nix Home Manager is a tool in the Nix ecosystem used for managing installation of packages and their
+      configuration from a singular configuration file written in the Nix Language. While Nix is a large (and
+      complicated) ecosystem to navigate for beginners, I have found it's package management to be beneficial to my own
+      workflow. On my personal device, I use a standalone installation of the Nix Home Manager. This is perfect for my
+      use case since I have not bothered to migrate to NixOS for my operating system. Currently, I am running Ubuntu
+      24.04. Once installed, I only need to alter my <code>home.nix</code> file stored in my
+      <code>~/.config/home-manager/</code> directory.
+    </p>
+    <p>This can be accomplished by running the command <code>home-manager edit</code> which opens your
+      <code>home.nix</code> file with your default editor. The configurations are not something you can guess. While
+      documentation is available online, the best resource is the <strong>home-configuration.nix</strong> manual page.
+      Once in the manpage, I simply type "/" to enter the search and search for "programs\.gh\." to quickly navigate to
+      the documentation for configuring GitHub CLI.
+    </p>
+    <p>The configuration I added to enable this program was simply <code lang="nix">programs.gh.enable = true;</code> to
+      enable Home Manager to install and manage the GitHub CLI application. Once the configuration is added, Nix/Home
+      Manager does not automatically apply your changes, you need to execute <code>home-manager switch</code> to apply
+      the changes so that they take effect. There is a lot more happening under the hood which I will not get into with
+      this post, but Nix is an interesting package manager and I'd encourage anyone to look into it.</p>
+
+    <h2>Authenticating GitHub CLI</h2>
+    <p>With GitHub CLI installed, you still need to authenticate. I'm no expert on this subject, so I'll simply tell you
+      what I did to get up and running. To check that <code>gh</code> was available.</p>
+  </main>
+
+  <footer>
+    <p>Made with anger, sleep deprevation, and maybe some love by Joey Holtkamp</p>
+  </footer>
+</body>
+
+</html>
